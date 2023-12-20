@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
+import { useRouter } from 'vue-router';
+import { setToken } from '../../utils/auth';
+
+const router = useRouter();
 const loginForm: Login = reactive({
 	userName: '',
 	password: '',
@@ -8,6 +12,8 @@ const loading = ref<boolean>(false);
 
 const handleLogin = () => {
   loading.value = true;
+  setToken('xxoo');
+  router.push({ path: '/' });
 }
 </script>
 <template>

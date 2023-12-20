@@ -3,9 +3,7 @@ import { ref, reactive, toRefs, onMounted } from 'vue'
 
 </script>
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <style scoped lang="scss"></style>
