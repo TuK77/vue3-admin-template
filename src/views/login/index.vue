@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import { setToken } from '../../utils/auth';
+import { setToken } from '@/utils/auth';
 
 const router = useRouter();
 const loginForm: Login = reactive({
@@ -11,9 +11,9 @@ const loginForm: Login = reactive({
 const loading = ref<boolean>(false);
 
 const handleLogin = () => {
-  loading.value = true;
-  setToken('xxoo');
-  router.push({ path: '/' });
+	loading.value = true;
+	setToken('xxoo');
+	router.push({ path: '/' });
 }
 </script>
 <template>
@@ -27,7 +27,7 @@ const handleLogin = () => {
 					<el-input type="password" v-model="loginForm.password" @keyup.enter.native="handleLogin" />
 				</el-form-item>
 			</el-form>
-      <el-button type="primary" :loading="loading" @click="handleLogin">登录</el-button>
+			<el-button type="primary" :loading="loading" @click="handleLogin">登录</el-button>
 		</div>
 	</div>
 </template>
@@ -39,21 +39,23 @@ const handleLogin = () => {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  background-image: url(../../assets/images/login_bg.png);
-  background-size: 100% 100%;
+	background-image: url(../../assets/images/login_bg.png);
+	background-size: 100% 100%;
+
 	.form-wrapper {
-    width: 430px;
-    padding: 20px;
+		width: 430px;
+		padding: 20px;
 		position: relative;
 		left: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #FFF;
-    border-radius: 4px;
-    .form {
-      width: 100%;
-    }
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: #FFF;
+		border-radius: 4px;
+
+		.form {
+			width: 100%;
+		}
 	}
 }
 </style>

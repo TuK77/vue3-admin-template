@@ -2,12 +2,30 @@
 import { ref, reactive, computed, onMounted } from 'vue';
 import { Expand, Fold, ArrowDown } from '@element-plus/icons-vue';
 import { useAppConfig } from '@/store/app';
+import { useRouter } from 'vue-router';
+import { removeToken } from '@/utils/auth';
 
+const router = useRouter();
 const appConfig = useAppConfig();
 const isOpen = computed(() => appConfig.aside.opened);
 
 const onToggleAside = () => {
   appConfig.onToggleAside();
+}
+const onDropDownClick = (val: string) => {
+  console.log(val)
+  switch (val) {
+    case 'home':
+      router.push({ path: '/index' });
+      break;
+    case 'personCenter':
+      router.push({ path: '/index' });
+      break;
+    case 'logout':
+      removeToken();
+      router.push({ path: '/login' });
+      break;
+  }
 }
 
 </script>
@@ -26,16 +44,16 @@ const onToggleAside = () => {
         <span>首页</span>
       </div>
       <div class="navbars-user">
-        <el-dropdown trigger="click">
+        <el-dropdown trigger="click" @command="onDropDownClick">
           <span class="el-dropdown-link">
             用户名
             <el-icon class="el-icon--right"><arrow-down /></el-icon>
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>首页</el-dropdown-item>
-              <el-dropdown-item>个人中心</el-dropdown-item>
-              <el-dropdown-item>退出登录</el-dropdown-item>
+              <el-dropdown-item command="home">首页</el-dropdown-item>
+              <el-dropdown-item command="personCenter">个人中心</el-dropdown-item>
+              <el-dropdown-item command="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
