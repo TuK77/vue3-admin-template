@@ -4,6 +4,7 @@ import { Expand, Fold, ArrowDown } from '@element-plus/icons-vue';
 import { useAppConfig } from '@/store/app';
 import { useRouter } from 'vue-router';
 import { removeToken } from '@/utils/auth';
+import Breadcrumb from '@/layout/component/navBar/breadcrumb.vue';
 
 const router = useRouter();
 const appConfig = useAppConfig();
@@ -13,7 +14,6 @@ const onToggleAside = () => {
   appConfig.onToggleAside();
 }
 const onDropDownClick = (val: string) => {
-  console.log(val)
   switch (val) {
     case 'home':
       router.push({ path: '/index' });
@@ -41,7 +41,7 @@ const onDropDownClick = (val: string) => {
             <Expand />
           </el-icon>
         </div>
-        <span>首页</span>
+        <Breadcrumb />
       </div>
       <div class="navbars-user">
         <el-dropdown trigger="click" @command="onDropDownClick">
@@ -74,6 +74,7 @@ const onDropDownClick = (val: string) => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid var(--next-border-color-light);
 
     .navbars-breadcrumb {
       height: inherit;

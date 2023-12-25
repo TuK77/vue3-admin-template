@@ -9,5 +9,6 @@ declare interface Login {
 declare interface RouteItem {
 	name: string;
 	path: string;
+	icon?: string;
 	children?: Array<RouteItem>;
 }

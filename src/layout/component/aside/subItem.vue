@@ -7,18 +7,20 @@ const props = defineProps<{
 </script>
 <template>
   <template v-for="val of props.children">
-    <el-sub-menu v-if="val.children" :key="val.path">
+    <el-sub-menu v-if="val.children" :key="val.path" :index="val.path">
       <template #title>
         <el-icon>
-          <location />
+          <component :is="val.icon"></component>
         </el-icon>
         <span>{{ val.name }}</span>
       </template>
       <SubItem :children="val.children"></SubItem>
     </el-sub-menu>
     <template v-else>
-      <el-menu-item :key="val.path">
-        <el-icon><icon-menu /></el-icon>
+      <el-menu-item :key="val.path" :index="val.path">
+        <el-icon>
+          <component :is="val.icon"></component>
+        </el-icon>
         <template #title>{{ val.name }}</template>
       </el-menu-item>
     </template>

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-export const useAppConfig = defineStore('apConfig', {
+export const useAppConfig = defineStore('appConfig', {
   state: () => ({
     aside: {
       opened: true
